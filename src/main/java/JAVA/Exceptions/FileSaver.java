@@ -19,14 +19,11 @@ public class FileSaver implements Save {
     public void save(String text, String file) {
         if (new File(file).exists()) {
             try {
-                throw new Exception();
-            } catch (Exception e) {
+                throw new FileAbsenceException();
+            } catch (FileAbsenceException e) {
                 System.out.println("Такой файл уже существует!");
             }
         } else {
-            File f = new File(file);
-            System.out.println("Новый файл создан, данные в него записаны!");
-        }
             try (FileWriter writer = new FileWriter(file, false)) {
                 writer.write(text);
                 writer.flush();
@@ -35,3 +32,4 @@ public class FileSaver implements Save {
             }
         }
     }
+}

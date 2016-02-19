@@ -3,6 +3,7 @@
  */
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /*
@@ -26,6 +27,8 @@ public class Test1 {
     public static void main(String[] args) {
         List<Integer> listInt = new ArrayList<Integer>();
         List<String> listStr = new ArrayList<String>();
+
+        listInt.size();
 
         listInt.add(8);
         listInt.add(1);
