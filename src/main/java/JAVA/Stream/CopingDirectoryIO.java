@@ -47,6 +47,5 @@ public class CopingDirectoryIO {
             outputStream.close();
             System.out.println("File copied from " + src + " to " + dest);
         }
-
     }
 }
