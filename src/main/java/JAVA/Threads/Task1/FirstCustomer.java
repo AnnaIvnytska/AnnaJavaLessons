@@ -1,4 +1,4 @@
-package JAVA.Threads;
+package JAVA.Threads.Task1;
 
 import java.util.ArrayList;
 import java.util.Queue;

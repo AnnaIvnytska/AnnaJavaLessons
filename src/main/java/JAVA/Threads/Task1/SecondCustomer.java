@@ -1,4 +1,4 @@
-package JAVA.Threads;
+package JAVA.Threads.Task1;
 
 import java.util.ArrayList;
 import java.util.Queue;
@@ -21,7 +21,6 @@ public class SecondCustomer implements Runnable {
         //actions
         while (!stop) {
             try {
-
 
             if ((queue.peek() % 2) != 0) {
                 try {

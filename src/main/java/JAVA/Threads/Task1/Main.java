@@ -1,16 +1,19 @@
-package JAVA.Threads;
+package JAVA.Threads.Task1;
 
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 /**
  * Created by ivnytska on 2/25/2016.
  */
+
+/*
+Разработать приложение, где producer помещает в очередь 100 случайных чисел,
+а 2 consumer’а ждут появления в очереди чисел - один четных, другой нечетных -
+забирают их и выводят в консоль
+*/
+
 public class Main {
-
-
     public static void main(String[] args) {
         BlockingQueue<Integer> queue = new ArrayBlockingQueue(101);
         Producer prod = new Producer(queue);
@@ -35,6 +38,5 @@ public class Main {
             }
         }
         producer.interrupt();
-
     }
 }
