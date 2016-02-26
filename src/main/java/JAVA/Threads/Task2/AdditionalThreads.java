@@ -9,48 +9,23 @@ package JAVA.Threads.Task2;
 в консоль сообщение о своей работе*/
 
 public class AdditionalThreads implements Runnable {
-    MainThread mt = new MainThread();
-    Thread thread1 = new Thread();
-    Thread thread2 = new Thread();
-    Thread thread3 = new Thread();
+    int counter;
+    String message;
+
+    public AdditionalThreads(int counter, String message) {
+        this.counter = counter;
+        this.message = message;
+    }
 
     @Override
     public void run() {
-        while (mt.counter > 100) {
-            thread1.start();
-            for (int i = 1; i < mt.counter; i++) {
-                System.out.println("thread1: I'm working from 100");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+        for (int i = 1; i < 1000000; i++) {
+            System.out.println(message);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
-        while (mt.counter > 300) {
-            thread2.start();
-            for (int i = 1; i < mt.counter; i++) {
-                System.out.println("thread2: I'm working from 300");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        while (mt.counter > 500) {
-            thread3.start();
-            for (int i = 1; i < mt.counter; i++) {
-                System.out.println("thread3: I'm working from 500");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
     }
-
-
 }

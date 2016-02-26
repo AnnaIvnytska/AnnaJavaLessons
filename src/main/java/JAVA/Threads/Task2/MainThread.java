@@ -8,24 +8,15 @@ package JAVA.Threads.Task2;
 а 3 потока стартуют при достижении счеткика 100, 300 и 500 соответственно - каждую секунду выводят
 в консоль сообщение о своей работе*/
 
-public class MainThread implements Runnable {
+public class MainThread {
 
-    int counter = 0;
+    public static void main(String[] args) {
+        int counter = 0;
 
-//    public MainThread(int counter){
-//        this.counter = counter;
-//    }
+        AdditionalThreads thread1 = new AdditionalThreads(counter, "thread1 works");
+        AdditionalThreads thread2 = new AdditionalThreads(counter, "thread2 works");
+        AdditionalThreads thread3 = new AdditionalThreads(counter, "thread3 works");
 
-    public void setCounter(int counter) {
-        this.counter = counter;
-    }
-
-    public int getCounter() {
-        return counter;
-    }
-
-    @Override
-    public void run() {
         for (int i = 1; i < 1000; i++) {
             counter++;
             try {
@@ -34,19 +25,15 @@ public class MainThread implements Runnable {
                 e.printStackTrace();
             }
             System.out.println("Main thread: counter is " + counter);
+            if (counter == 100) {
+                new Thread(thread1).start();
+            }
+            if (counter == 300) {
+                new Thread(thread2).start();
+            }
+            if (counter == 500) {
+                new Thread(thread3).start();
+            }
         }
     }
-
-    public static void main(String[] args) {
-        MainThread mt = new MainThread();
-        Thread mainThread = new Thread(mt);
-        mainThread.start();
-
-        Thread additionalThread = new Thread(new AdditionalThreads());
-        additionalThread.start();
-
-
-    }
-
-
 }
