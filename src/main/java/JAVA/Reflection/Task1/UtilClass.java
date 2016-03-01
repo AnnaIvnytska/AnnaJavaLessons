@@ -18,28 +18,6 @@ getPublicValue, на вход которого подается проиници
  */
 public class UtilClass {
 
-//    public String getPublicValue(BeanClass beanClass, String fieldName) throws IllegalAccessException {
-////        Class clazz = beanClass.getClass();
-//        Field[] fields = beanClass.getClass().getDeclaredFields();
-//
-//
-//        String result = "";
-//
-////        Field[] fields1 = clazz.getDeclaredFields();
-//        for (Field field : fields) {
-////            System.out.println("\t" + field);
-//            if (field.getAnnotation(AnnotationClass.Public.class). && field.getName().equals(fieldName)){
-//                result = fieldName;
-//                break;
-//            }else{
-////                throw new IllegalAccessException();
-//                result = "fff";
-//            }
-//        }
-//        System.out.println(result);
-//        return result;   //непонятно, что будет с else
-//    }
-
 
     //работает, но возвращает название поля, а не его значние, из того, что List создан как String, а не Field
 //    public String getPublicValue(BeanClass beanClass, String fieldName) throws IllegalAccessException {
@@ -69,7 +47,7 @@ public class UtilClass {
 //        return fieldName;
 
 
-    //новый работает как надо
+    //новый, работает как надо
 
     public String getPublicValue(BeanClass beanClass, String fieldName) throws IllegalAccessException {
         Field[] allFields = beanClass.getClass().getDeclaredFields();
