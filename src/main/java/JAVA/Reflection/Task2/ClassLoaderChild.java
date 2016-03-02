@@ -48,26 +48,26 @@ public class ClassLoaderChild extends ClassLoader implements IPathClassLoader {
         return directory.toString();
     }
 
-//    public Class<?> loadClassFromFile(String className) throws ClassNotFoundException, IOException, NullPointerException {
-//        File pathToFile = null;
-//        byte[] bytes = null;
-//        if (directory == null) {
-//            throw new ClassNotFoundException();
-//        }
-//        if (!className.matches(".class")) {
-//            className = className.replace('.', File.separatorChar) + ".class";
-//        }
-//        pathToFile = directory.resolve(className).toFile();
-//        bytes = loadFileFromFs(pathToFile);
-//        return defineClass(null, bytes, 0, bytes.length);
-//    }
-//
-//    private byte[] loadFileFromFs(File pathToFile) throws IOException {
-//        byte[] bytes = null;
-//        if (!pathToFile.exists()) {
-//            throw new FileNotFoundException();
-//        }
-//        bytes = Files.readAllBytes(pathToFile.toPath());
-//        return bytes;
-//    }
+    public Class<?> loadClassFromFile(String className) throws ClassNotFoundException, IOException, NullPointerException {
+        File pathToFile = null;
+        byte[] bytes = null;
+        if (directory == null) {
+            throw new ClassNotFoundException();
+        }
+        if (!className.matches(".class")) {
+            className = className.replace('.', File.separatorChar) + ".class";
+        }
+        pathToFile = directory.resolve(className).toFile();
+        bytes = loadFileFromFs(pathToFile);
+        return defineClass(null, bytes, 0, bytes.length);
+    }
+
+    private byte[] loadFileFromFs(File pathToFile) throws IOException {
+        byte[] bytes = null;
+        if (!pathToFile.exists()) {
+            throw new FileNotFoundException();
+        }
+        bytes = Files.readAllBytes(pathToFile.toPath());
+        return bytes;
+    }
 }
