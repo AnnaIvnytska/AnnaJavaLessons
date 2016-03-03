@@ -14,6 +14,5 @@ public class Main {
         classLoaderChild.setPath(pathToClass);
         Class result = classLoaderChild.loadClassFromFile("Student");
         System.out.println(Arrays.toString(result.getClass().getDeclaredMethods()));
-
     }
 }
