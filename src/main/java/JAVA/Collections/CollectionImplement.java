@@ -15,6 +15,7 @@ public class CollectionImplement<T> implements Collection {
     public int size;
 
 
+    // работает
     @Override
     public int size() {
         int count = 0;
@@ -25,8 +26,7 @@ public class CollectionImplement<T> implements Collection {
         return count;
     }
 
-//    int size = size();
-
+    // работает
     @Override
     public boolean isEmpty() {
         int count = 0;
@@ -39,6 +39,7 @@ public class CollectionImplement<T> implements Collection {
             return false;
     }
 
+    // работает
     @Override
     public boolean contains(Object o) {
         boolean value = true;
@@ -73,32 +74,43 @@ public class CollectionImplement<T> implements Collection {
         return false;
     }
 
-    // нужно доработать, переместить данные в старый массив + проверка, удалился ли элемент
+    // работает
     @Override
     public boolean remove(Object o) {
+
         int index = 0;
+        if (!contains(o)) {
+            return false;
+        }
+
         for (int i = 0; i < array.length; i++) {
             if (array[i].equals(o)) {
                 index = i;
             }
         }
+
         Object[] tempArr = new Object[array.length - 1];
-        for (int i = 0; i < index; i++) {
-            tempArr[i] = array[i];
+
+        for (Object item : array) {
+            for (int i = 0, j = 0; i < array.length; i++) {
+                if (array[i] != o) {
+                    tempArr[j] = array[i];
+                    j++;
+                }
+            }
         }
 
-        for (int i = index; i < tempArr.length; i++) {
-            tempArr[i] = array[i + 1];
-        }
-
-        for (int i = 0; i < array.length - 1; i++) {
+        array = Arrays.copyOf(tempArr, tempArr.length);
+        for (int i = 0; i < array.length; i++) {
             array[i] = tempArr[i];
         }
-//        for (int i = 0; i < array.length; i++) {
-//            System.out.println(array[i]);
-//        }
-        return false;
+
+        if (!contains(o)) {
+            return true;
+        } else
+            return false;
     }
+
 
     // cкорее всего неправильно
     @Override
@@ -148,13 +160,13 @@ public class CollectionImplement<T> implements Collection {
         return true;
     }
 
-    //из-за remove не правильно работает
+    //работает
     @Override
     public boolean removeAll(Collection c) {
         Object[] newArray = c.toArray();
         int oldHash = Arrays.hashCode(array);
-        for (Object x : newArray) {
-            remove(x);
+        for (Object item : newArray) {
+            remove(item);
         }
         size();
         int newHash = Arrays.hashCode(array);
@@ -167,11 +179,11 @@ public class CollectionImplement<T> implements Collection {
     @Override
     public boolean containsAll(Collection c) {
         boolean a = true;
-        for (int i = 0; i < array.length; i++) {
-            if (c.contains(array[i])) {
+//        for (int i = 0; i < array.length; i++) {
+            if (contains(c)) {
                 a = true;
             } else a = false;
-        }
+//        }
         return a;
 
     }

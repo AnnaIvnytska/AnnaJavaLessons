@@ -17,6 +17,7 @@ public class Main {
         collectionImplement.add("8");
         collectionImplement.add("9");
         collectionImplement.add("10");
+        collectionImplement.add("11");
 
         CollectionImplement<String> additionalCollection = new CollectionImplement<String>();
         additionalCollection.add("1");
@@ -25,26 +26,28 @@ public class Main {
 //        additionalCollection.add("4");
 //        additionalCollection.add("5");
 //        additionalCollection.add("6");
-        additionalCollection.add("7");
+//        additionalCollection.add("7");
 //        additionalCollection.add("8");
 //        additionalCollection.add("9");
 //        additionalCollection.add("10");
+        additionalCollection.add("11");
+//        additionalCollection.add("22");
 
         String[] aaa = {};
 
-//        System.out.println("collectionImplement.size() = " + collectionImplement.size());
-//        System.out.println("collectionImplement.isEmpty() = " + collectionImplement.isEmpty());
-//        System.out.println("collectionImplement.contains() = " + collectionImplement.contains("1"));
+//        System.out.println("collectionImplement.size() = " + collectionImplement.size());                                         // работает
+//        System.out.println("collectionImplement.isEmpty() = " + collectionImplement.isEmpty());                                   // работает
+//        System.out.println("collectionImplement.contains() = " + collectionImplement.contains("7"));                              // работает
 //  ?        System.out.println("iterator = " + collectionImplement.iterator());
 //        System.out.println("collectionImplement.toArray() = " + collectionImplement.toArray());
-//        System.out.println("collectionImplement.remove() = " + collectionImplement.remove("8"));
+//        System.out.println("collectionImplement.remove() = " + collectionImplement.remove("5"));                                  // работает
 //        System.out.println("collectionImplement.addAll() = " + collectionImplement.addAll(additionalCollection));
 //        collectionImplement.clear();
-//        System.out.println("collectionImplement.containsAll() = " + collectionImplement.containsAll(additionalCollection));
+        System.out.println("collectionImplement.containsAll() = " + collectionImplement.containsAll(additionalCollection));
 //        System.out.println("collectionImplement.toArray() = " + collectionImplement.toArray());
 //        System.out.println("collectionImplement.toArray() = " + collectionImplement.toArray(aaa));
-//        System.out.println("collectionImplement.removeAll() = " + collectionImplement.removeAll(additionalCollection));
-        System.out.println("collectionImplement.retainAll() = " + collectionImplement.retainAll(additionalCollection));
+//        System.out.println("collectionImplement.removeAll() = " + collectionImplement.removeAll(additionalCollection));            // работает
+//        System.out.println("collectionImplement.retainAll() = " + collectionImplement.retainAll(additionalCollection));
 
 
     }
