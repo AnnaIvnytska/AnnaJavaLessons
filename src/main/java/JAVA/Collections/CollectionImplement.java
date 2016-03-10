@@ -53,7 +53,6 @@ public class CollectionImplement<T> implements Collection {
         return value;
     }
 
-
     @Override
     public IteratorImplement iterator() {
         IteratorImplement iteratorImplement = new IteratorImplement();
@@ -65,13 +64,16 @@ public class CollectionImplement<T> implements Collection {
         return array;
     }
 
+    //работает
     @Override
     public boolean add(Object o) {
         size();
         array = Arrays.copyOf(array, size + 1);
         array[size] = o;
-
-        return false;
+        size();
+        if (contains(o))
+            return true;
+        else return false;
     }
 
     // работает
@@ -112,52 +114,57 @@ public class CollectionImplement<T> implements Collection {
     }
 
 
-    // cкорее всего неправильно
+    // работает(1й вариант)
+//    @Override
+//    public boolean addAll(Collection c) {
+//        Object[] newArray = c.toArray();
+//        int oldHash = Arrays.hashCode(array);
+//        int oldLength = array.length;
+//        try {
+//            array = Arrays.copyOf(array, array.length + newArray.length);
+//        } catch (OutOfMemoryError error) {
+//            throw new OutOfMemoryError();
+//        }
+//        System.arraycopy(newArray, 0, array, oldLength, newArray.length);
+//        int newHash = Arrays.hashCode(array);
+//        size();
+//        if (oldHash != newHash) {
+//            return true;
+//        }
+//        return false;
+//    }
+
+    //работает(2й вариант)
     @Override
     public boolean addAll(Collection c) {
         Object[] newArray = c.toArray();
-        int oldHash = Arrays.hashCode(array);
-        int oldLength = array.length;
-        try {
-            array = Arrays.copyOf(array, array.length + newArray.length);
-        } catch (OutOfMemoryError error) {
-            throw new OutOfMemoryError();
-        }
-        System.arraycopy(newArray, 0, array, oldLength, newArray.length);
-        int newHash = Arrays.hashCode(array);
-        size();
-        if (oldHash != newHash) {
+        for (Object item : newArray)
+            add(item);
+        if (containsAll(c)) {
             return true;
-        }
-        return false;
-//        add(c);
-//        for (int i = 0; i < array.length; i++) {
-//            System.out.println(array[i]);
-//        }
-//        return false;
+        } else return false;
     }
 
+    //работает
     @Override
     public void clear() {
         for (int i = 0; i < size; i++)
             array[i] = null;
-
         size = 0;
     }
 
-    //не то
+    //работает
     @Override
     public boolean retainAll(Collection c) {
-        Object[] arrayNew = toArray(array);
-        for (int i = 0; i < size; i++) {
-            if (c.contains(arrayNew[i])) {
-                remove(arrayNew[i]);
+        for (Object itemOld : array) {
+            if (!c.contains(itemOld)) {
+                remove(itemOld);
             }
-//            for (int j = 0; j < arrayNew.length; j++) {
-//                System.out.println(array[j]);
-//            }
         }
-        return true;
+
+        if (c.size() == array.length && containsAll(c)) {
+            return true;
+        } else return false;
     }
 
     //работает
@@ -176,14 +183,19 @@ public class CollectionImplement<T> implements Collection {
         return false;
     }
 
+    //работает
     @Override
     public boolean containsAll(Collection c) {
-        boolean a = true;
-//        for (int i = 0; i < array.length; i++) {
-            if (contains(c)) {
+        Object[] newArray = c.toArray();
+        boolean a = true;//
+        for (Object item : newArray) {
+            if (contains(item)) {
                 a = true;
-            } else a = false;
-//        }
+            } else {
+                a = false;
+                break;
+            }
+        }
         return a;
 
     }
@@ -191,11 +203,12 @@ public class CollectionImplement<T> implements Collection {
     @Override
     public Object[] toArray(Object[] a) {
         if (a.length < array.length) {
-            return Arrays.copyOf(array, array.length, a.getClass());
+            Arrays.copyOf(array, array.length, a.getClass());
+//            System.arraycopy(array, 0, a, 0, array.length);
         } else {
             System.arraycopy(array, 0, a, 0, array.length);
-            return a;
         }
+            return a;
     }
 
     /*-----------------------------*/
