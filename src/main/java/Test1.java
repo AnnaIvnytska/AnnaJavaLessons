@@ -39,6 +39,7 @@ public class Test1 {
         listStr.add("world");
 
         System.out.println(listStr);
+        StringBuilder stringBuilder = new StringBuilder();
     }
 
 
