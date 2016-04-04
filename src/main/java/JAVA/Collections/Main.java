@@ -43,7 +43,7 @@ public class Main {
 //        System.out.println("collectionImplement.size() = " + collectionImplement.size());                                         // работает
 //        System.out.println("collectionImplement.isEmpty() = " + collectionImplement.isEmpty());                                   // работает
 //        System.out.println("collectionImplement.contains() = " + collectionImplement.contains("7"));                              // работает
-//  ?        System.out.println("iterator = " + collectionImplement.iterator());
+//        System.out.println("iterator = " + collectionImplement.iterator());
 //        System.out.println("collectionImplement.toArray() = " + collectionImplement.toArray());
 //        System.out.println("collectionImplement.remove() = " + collectionImplement.remove("5"));                                  // работает
 //        System.out.println("collectionImplement.addAll() = " + collectionImplement.addAll(additionalCollection));                 // работает
