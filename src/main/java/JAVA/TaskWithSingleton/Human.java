@@ -6,20 +6,17 @@ package JAVA.TaskWithSingleton;
 public class Human {
     public String name;
 
-    private static volatile Human human;
+    private static Human human;
 
     private Human() {
-        // Exists only to defeat instantiation.
+    }
+
+    private static class SingletonHolder {
+        private final static Human name = new Human();
     }
 
     public static Human getHuman() {
-        if (human == null)
-            synchronized (Human.class) {
-                if (human == null)
-                    human = new Human();
-
-            }
-        return human;
+        return SingletonHolder.name;
     }
 
     protected static void demoMethod() {
