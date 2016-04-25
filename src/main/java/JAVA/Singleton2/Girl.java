@@ -6,7 +6,6 @@ package JAVA.Singleton2;
 
 public class Girl {
 
-
     @MyReflectionAnnotation
     public Human human;
 

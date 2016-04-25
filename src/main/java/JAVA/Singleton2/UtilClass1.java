@@ -84,8 +84,6 @@ public class UtilClass1 {
             Field[] allFields = oneClass.getDeclaredFields();
             for (Field oneField : allFields) {
                 if (oneField.isAnnotationPresent(MyReflectionAnnotation.class)) {
-
-
                  oneClass.getField("human").set(oneClass,oneField.getType().getDeclaredMethod("getInstance").invoke(oneField));
 //                    annotatedClass.add(oneClass);
                 }

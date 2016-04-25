@@ -79,7 +79,6 @@ public class CollectionImplement<T> implements Collection {
     // работает
     @Override
     public boolean remove(Object o) {
-
         int index = 0;
         if (!contains(o)) {
             return false;
@@ -197,7 +196,6 @@ public class CollectionImplement<T> implements Collection {
             }
         }
         return a;
-
     }
 
     @Override
@@ -208,7 +206,7 @@ public class CollectionImplement<T> implements Collection {
         } else {
             System.arraycopy(array, 0, a, 0, array.length);
         }
-            return a;
+        return a;
     }
 
     /*-----------------------------*/
